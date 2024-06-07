@@ -4,7 +4,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="450"
         x:Class="Avalonia_theme_switch.MainWindow"
-        Background="LightSlateGray"
         Title="Avalonia_theme_switch">
     <Window.Styles>
         <!-- set day cloud position -->
@@ -12,6 +11,11 @@
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="Data" Value="m6.15937,30.80641c-12.75504,-5.62722 -3.75148,-23.63433 9.32526,-20.76713c2.67948,-13.7465 18.62328,-9.4323 20.87417,-4.55537c7.12782,-10.50415 21.38345,-4.12663 21.33,4.18023c8.3067,-8.30686 19.186,2.00972 15.9438,9.3787c9.057,-3.24236 14.8718,9.13753 7.55641,14.57718c3.93906,5.8148 -1.87574,17.25682 -13.93393,9.80745c0.80374,7.63694 -12.70159,14.38961 -22.64302,2.94759c-4.68935,8.06569 -23.07161,6.37752 -22.93748,-5.57362c-7.63709,6.51149 -18.70396,-1.74176 -15.5152,-9.99502l-0.00001,-0.00001z"></Setter>
             <Setter Property="Fill" Value="#fff" />
+            <Setter Property="Transitions">
+                <Transitions>
+                    <ThicknessTransition Property="Margin" Duration="0:0:0.35" Easing="CubicEaseInOut" />
+                </Transitions>
+            </Setter>
             <Style Selector="^#cloud1">
                 <Setter Property="Opacity" Value="0.5"></Setter>
                 <Setter Property="Margin" Value="-55,20,0,0" />
@@ -46,6 +50,12 @@
             <Setter Property="Height" Value="42" />
             <Setter Property="RenderTransform" Value="translateX(-40px)" />
             <Setter Property="Fill" Value="#ffa34c" />
+            <Setter Property="Transitions">
+                <Transitions>
+                    <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.35" Easing="CubicEaseInOut" />
+                    <BrushTransition Property="Fill" Duration="0:0:0.35" />
+                </Transitions>
+            </Setter>
         </Style>
         <Style Selector="ToggleButton.fancy:checked /template/ Ellipse#planet">
             <Setter Property="Width" Value="42" />
@@ -53,19 +63,35 @@
             <Setter Property="RenderTransform" Value="translateX(40px)" />
             <Setter Property="Fill" Value="#e5b91a" />
         </Style>
-        <Style Selector="ToggleButton.fancy /template/ Canvas#stars Ellipse">
+        <Style Selector="ToggleButton.fancy /template/ Canvas#stars">
             <Setter Property="Opacity" Value="0"></Setter>
+            <Setter Property="Margin" Value="0,40,0,0"></Setter>
+            <Setter Property="Transitions">
+                <Transitions>
+                    <ThicknessTransition Easing="CubicEaseInOut" Property="Margin" Duration="0:0:0.35" />
+                    <DoubleTransition Property="Opacity" Duration="0:0:0.35" />
+                </Transitions>
+            </Setter>
+        </Style>
+        <Style Selector="ToggleButton.fancy:checked /template/ Canvas#stars">
+            <Setter Property="Margin" Value="0,0,0,0"></Setter>
+            <Setter Property="Opacity" Value="1"></Setter>
+        </Style>
+        <Style Selector="ToggleButton.fancy /template/ Canvas#stars Ellipse">
             <Setter Property="Fill" Value="#fff" />
             <Setter Property="Width" Value="1.5" />
             <Setter Property="Height" Value="1.5" />
         </Style>
-        <Style Selector="ToggleButton.fancy:checked /template/ Canvas#stars Ellipse">
-            <Setter Property="Opacity" Value="1"></Setter>
-        </Style>
+
         <Style Selector="ToggleButton.fancy">
             <Setter Property="Width" Value="130" />
             <Setter Property="Height" Value="50" />
             <Setter Property="Background" Value="#8cbcfc" />
+            <Setter Property="Transitions">
+                <Transitions>
+                    <BrushTransition Property="Background" Duration="0:0:0.35" />
+                </Transitions>
+            </Setter>
             <Setter Property="Template">
                 <ControlTemplate>
                     <Panel>
@@ -101,11 +127,24 @@
                 </ControlTemplate>
             </Setter>
         </Style>
-        <Style Selector="ToggleButton.fancy:checked" >
-            <Setter Property="Background" Value="#303e56"></Setter>
+        <Style Selector="ToggleButton.fancy:checked">
+            <Setter Property="Background" Value="#191c25" />
+            <Setter Property="Transitions">
+                <Transitions>
+                    <BrushTransition Duration="0:0:0.35" Property="Background"/>
+                </Transitions>
+            </Setter>
         </Style>
+        
+        <Style Selector="Panel#bg">
+            <Setter Property="Background" Value="#e9f1fc" />
+        </Style>
+        <Style Selector="Panel.dark#bg">
+            <Setter Property="Background" Value="#303e56" />
+        </Style>
+        
     </Window.Styles>
-    <Panel>
-        <ToggleButton Classes="fancy" />
-    </Panel>
+        <Panel Name="bg" Classes.dark="{Binding #themeSwitch.IsChecked}">
+            <ToggleButton Name="themeSwitch" Classes="fancy"/>
+        </Panel>
 </Window>
