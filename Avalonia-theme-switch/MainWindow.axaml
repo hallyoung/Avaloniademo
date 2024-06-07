@@ -4,6 +4,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="450"
         x:Class="Avalonia_theme_switch.MainWindow"
+        Background="LightSlateGray"
         Title="Avalonia_theme_switch">
     <Window.Styles>
         <Style Selector="Path.cloud">
@@ -44,6 +45,13 @@
             <Setter Property="Template">
                 <ControlTemplate>
                     <Panel>
+                        <Panel.Clip>
+                            <GeometryGroup FillRule="NonZero">
+                                <EllipseGeometry RadiusX="25" RadiusY="25" Rect="0,0,50,50" />
+                                <EllipseGeometry RadiusX="25" RadiusY="25" Rect="80,0,50,50" />
+                                <RectangleGeometry Rect="25,0,80,50" />
+                            </GeometryGroup>
+                        </Panel.Clip>
                         <Border CornerRadius="25" Background="{TemplateBinding Background}" />
                         <Path Name="cloud1" Classes="cloud"  />
                         <Path Name="cloud2" Classes="cloud"  />
