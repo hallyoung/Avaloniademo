@@ -62,8 +62,11 @@
                 </ControlTemplate>
             </Setter>
         </Style>
+        <Style Selector="ToggleButton.fancy:checked" >
+            <Setter Property="Background" Value="#303e56"></Setter>
+        </Style>
     </Window.Styles>
     <Panel>
-        <ToggleButton Classes="fancy" />
+        <ToggleButton Classes="fancy" IsChecked="True"/>
     </Panel>
 </Window>
