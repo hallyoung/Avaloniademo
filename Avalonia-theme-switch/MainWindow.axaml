@@ -53,6 +53,15 @@
             <Setter Property="RenderTransform" Value="translateX(40px)" />
             <Setter Property="Fill" Value="#e5b91a" />
         </Style>
+        <Style Selector="ToggleButton.fancy /template/ Canvas#stars Ellipse">
+            <Setter Property="Opacity" Value="0"></Setter>
+            <Setter Property="Fill" Value="#fff" />
+            <Setter Property="Width" Value="1.5" />
+            <Setter Property="Height" Value="1.5" />
+        </Style>
+        <Style Selector="ToggleButton.fancy:checked /template/ Canvas#stars Ellipse">
+            <Setter Property="Opacity" Value="1"></Setter>
+        </Style>
         <Style Selector="ToggleButton.fancy">
             <Setter Property="Width" Value="130" />
             <Setter Property="Height" Value="50" />
@@ -68,6 +77,21 @@
                             </GeometryGroup>
                         </Panel.Clip>
                         <Border CornerRadius="25" Background="{TemplateBinding Background}" />
+                        <Canvas Name="stars">
+                            <Ellipse Canvas.Left="50" Canvas.Top="30" />
+                            <Ellipse Canvas.Left="70" Canvas.Top="20" />
+                            <Ellipse Canvas.Left="20" Canvas.Top="15" />
+                            <Ellipse Canvas.Left="85" Canvas.Top="24" />
+                            <Ellipse Canvas.Left="44" Canvas.Top="37" />
+                            <Ellipse Canvas.Left="42" Canvas.Top="13" />
+                            <Ellipse Canvas.Left="74" Canvas.Top="40" />
+                            <Ellipse Canvas.Left="14" Canvas.Top="38" Opacity="0.3" />
+                            <Ellipse Canvas.Left="26" Canvas.Top="43" Opacity="0.3" />
+                            <Ellipse Canvas.Left="29" Canvas.Top="29" Opacity="0.3" />
+                            <Ellipse Canvas.Left="66" Canvas.Top="12" Opacity="0.3" />
+                            <Ellipse Canvas.Left="84" Canvas.Top="20" Opacity="0.3" />
+                            <Ellipse Canvas.Left="94" Canvas.Top="30" Opacity="0.3" />
+                        </Canvas>
                         <Path Name="cloud1" Classes="cloud"  />
                         <Path Name="cloud2" Classes="cloud"  />
                         <Path Name="cloud3" Classes="cloud"  />
